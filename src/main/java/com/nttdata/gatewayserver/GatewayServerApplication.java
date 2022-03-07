@@ -13,14 +13,4 @@ public class GatewayServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(GatewayServerApplication.class, args);
     }
-
-    /*@Bean
-    public RouteLocator customRoutes(RouteLocatorBuilder builder) {
-        return builder.routes()
-                .route(p -> p
-                        .path("/account/get/all")
-                        .filters(f -> f.setPath("/get/all"))
-                        .uri("lb://account"))
-                .build();
-    }*/
 }
