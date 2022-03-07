@@ -1,0 +1,21 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: account-get-all
+          uri: lb://account
+          predicates:
+            - Path=/account/get/all
+          filters:
+            - SetPath=/get/all
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
