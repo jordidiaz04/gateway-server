@@ -8,12 +8,14 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: account-get-all
-          uri: lb://account
+        - id: account-service
+          uri: lb://account-service
           predicates:
-            - Path=/account/get/all
-          filters:
-            - SetPath=/get/all
+            - Path=/accounts/**
+        - id: transaction-service
+          uri: lb://transaction-service
+          predicates:
+            - Path=/transactions/**
 
 eureka:
   client:
