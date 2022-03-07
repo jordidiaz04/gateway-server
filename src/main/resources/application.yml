@@ -16,6 +16,15 @@ spring:
           uri: lb://transaction-service
           predicates:
             - Path=/transactions/**
+        - id: clients
+          uri: lb://clients
+          predicates:
+            Path=/clients/**
+        - id: credits
+          uri: lb://credits
+          predicates:
+            Path=/credits/**
+          
 
 eureka:
   client:
