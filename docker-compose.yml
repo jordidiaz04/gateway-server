@@ -3,10 +3,8 @@ services:
   gateway-server:
     container_name: gateway-server
     build: .
-    depends_on:
-      - eureka-server
+    restart: always
     environment:
-      - "EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka"
       - "SPRING_PROFILES_ACTIVE=docker"
     ports:
       - "7001:7001"
