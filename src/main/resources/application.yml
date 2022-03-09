@@ -1,7 +1,9 @@
 server:
-  port: 9001
+  port: 7001
 
 spring:
+  profiles:
+    active: local
   application:
     name: gateway
 
@@ -24,17 +26,17 @@ spring:
           uri: lb://credits
           predicates:
             Path=/credits/**
-          
+
 resilience4j:
   circuitbreaker:
     configs:
       default:
-        sliding-window-size: 6 
-        failure-rate-threshold: 50 
-        wait-duration-in-open-state: 20s 
-        permitted-number-of-calls-in-half-open-state: 4 
-        slow-call-rate-threshold: 50 
-        slow-call-duration-threshold: 2s 
+        sliding-window-size: 6
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 4
+        slow-call-rate-threshold: 50
+        slow-call-duration-threshold: 2s
     instances:
       account-service:
         base-config: default
@@ -57,8 +59,3 @@ resilience4j:
        base-config: default
       credits:
        base-config: default
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
