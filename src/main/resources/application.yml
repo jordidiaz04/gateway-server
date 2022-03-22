@@ -26,6 +26,14 @@ spring:
           uri: lb://credits
           predicates:
             Path=/credits/**
+        - id: fees
+          uri: lb://fees
+          predicates:
+            Path=/fees/**
+        - id: reports
+          uri: lb://reports
+          predicates:
+            Path=/reports/**
 
 resilience4j:
   circuitbreaker:
@@ -46,6 +54,10 @@ resilience4j:
         base-config: default
       credits:
         base-config: default
+      fees:
+        base-config: default
+      reports:
+        base-config: default
   timelimiter:
     configs:
       default:
@@ -58,4 +70,8 @@ resilience4j:
       clients:
        base-config: default
       credits:
+       base-config: default
+      fees:
+       base-config: default
+      reports:
        base-config: default
