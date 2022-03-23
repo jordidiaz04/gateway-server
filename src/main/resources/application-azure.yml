@@ -3,7 +3,7 @@ eureka:
     serviceUrl:
       defaultZone: https://bootcamp-eurekaserver.azurewebsites.net:443/eureka
   instance:
-    hostname: bootcamp-gateway.azurewebsites.net
+    hostname: bootcamp-gatewayserver.azurewebsites.net
     secure-port-enabled: true
     nonsecure-port-enabled: false
     nonSecurePort: 80
