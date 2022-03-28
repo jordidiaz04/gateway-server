@@ -21,6 +21,6 @@ spec:
             - containerPort: 7001
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: docker
+              value: test
       imagePullSecrets:
         - name: bootcampsecret
