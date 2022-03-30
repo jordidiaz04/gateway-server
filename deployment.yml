@@ -1,26 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gateway-server
+  name: gateway-server-app
   labels:
-    app: gateway-server
+    app: gateway-server-app
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: gateway-server
+      app: gateway-server-app
   template:
     metadata:
       labels:
-        app: gateway-server
+        app: gateway-server-app
     spec:
       containers:
-        - name: gateway-server
-          image: nttdatabootcampacr.azurecr.io/gateway-server:1.0
+        - name: gateway-server-app
+          image: jordidiaz495/gateway-server:1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 7001
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: test
-      imagePullSecrets:
-        - name: bootcampsecret
+              valueFrom:
+                configMapKeyRef:
+                  name: gateway-cm
+                  key: active_profle
