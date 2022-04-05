@@ -16,13 +16,15 @@ spec:
     spec:
       containers:
         - name: gateway-server-app
-          image: jordidiaz495/gateway-server:1.0
+          image: ${REPOSITORY_NAME}.azurecr.io/${APP_NAME}:${IMAGE_TAG}
           imagePullPolicy: Always
           ports:
             - containerPort: 7001
           env:
-            - name: SPRING_PROFILES_ACTIVE
+            - name: PROFILE
+              value: prod
+            - name: EUREKA_DEFAULT_ZONE
               valueFrom:
                 configMapKeyRef:
-                  name: gateway-cm
-                  key: active_profle
+                  name: eureka-cm
+                  key: eureka_default_zone

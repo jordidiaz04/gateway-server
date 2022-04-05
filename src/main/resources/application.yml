@@ -2,10 +2,10 @@ server:
   port: 7001
 
 spring:
-  profiles:
-    active: @activatedProperties@
   application:
-    name: gateway
+    name: gateway-server
+  profiles:
+    active: ${PROFILE:dev}
 
   cloud:
     gateway:
